@@ -1,0 +1,6 @@
+{
+  "name": "toppanel-cms-oauth",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GitHub OAuth relay for the Decap CMS admin at /admin — deployed to Vercel, separate from the FTP-hosted static site."
+}

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOPPANEL Official Logo Motion</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .stage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            perspective: 1400px;
+        }
+
+        .logo-container {
+            width: 100vw;
+            height: auto;
+            filter: drop-shadow(0 10px 40px rgba(0,0,0,0.22));
+        }
+
+        .slogan-text {
+            margin-top: 14px;
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 0.24em;
+            opacity: 0;
+            transform: translateY(15px);
+            text-align: center;
+            color: #111;
+        }
+
+        .replay-btn {
+            position: absolute;
+            bottom: 40px;
+            background: #ffffff;
+            border: 1.5px solid #cbd5e0;
+            padding: 10px 24px;
+            font-size: 0.9rem;
+            color: #4a5568;
+            border-radius: 24px;
+            cursor: pointer;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: all 0.2s;
+        }
+        .replay-btn:hover {
+            background: #111;
+            color: #ffffff;
+            border-color: #111;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.22);
+        }
+
+        /* full-screen white burst on click */
+        .flash-overlay {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(255,255,255,1) 0%, rgba(255,255,255,0.3) 55%, transparent 80%);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 20;
+        }
+
+        /* spin rings — fixed position, sized + placed by JS at the symbol center */
+        .spin-ring {
+            position: fixed;
+            border-radius: 50%;
+            border-style: solid;
+            border-color: transparent;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 5;
+            transform-origin: 50% 50%;
+        }
+        #ring-1 { border-top-color: #111; border-right-color: #444; border-bottom-color: #777; }
+        #ring-2 { border-top-color: #222; border-left-color:  #555; border-bottom-color: #888; }
+        #ring-3 { border-top-color: #111; border-right-color: #333; border-bottom-color: #666; }
+    </style>
+</head>
+<body>
+
+<div class="flash-overlay" id="flash-overlay"></div>
+
+<!-- 3 rings — positioned at the symbol center by setupRings() -->
+<div class="spin-ring" id="ring-1"></div>
+<div class="spin-ring" id="ring-2"></div>
+<div class="spin-ring" id="ring-3"></div>
+
+<div class="stage" onclick="playLogoAnimation()">
+    <svg class="logo-container" xmlns="http://www.w3.org/2000/svg" viewBox="0 12 715 246">
+        <g id="symbol-group" style="transform-box: fill-box; transform-origin: center;">
+            <rect id="main-box" x="10" y="20" width="170" height="225" fill="#111111" rx="4"/>
+            <rect id="pillar-left"  x="27"  y="80" width="42" height="148" fill="#ffffff" rx="2"/>
+            <rect id="pillar-right" x="122" y="80" width="42" height="148" fill="#ffffff" rx="2"/>
+            <path id="bracket-line" d="M 100,94 L 84,94 L 84,218 L 100,218"
+                  fill="none" stroke="#ffffff" stroke-width="6"
+                  stroke-linecap="square"/>
+        </g>
+
+        <text id="text-top"   x="200" y="175"
+              font-family="'Helvetica Neue','Segoe UI',Arial,sans-serif"
+              font-size="92" font-weight="300" fill="#111111" letter-spacing="-2">TOP</text>
+        <text id="text-panel" x="392" y="175"
+              font-family="'Arial Black',Impact,sans-serif"
+              font-size="92" font-weight="900" fill="#111111" letter-spacing="-3">PANEL</text>
+    </svg>
+
+    <div class="slogan-text" id="slogan">공간을 완성하는 화장실칸막이 솔루션</div>
+</div>
+
+<button class="replay-btn" onclick="playLogoAnimation()">애니메이션 다시보기 &nbsp;↻</button>
+
+<script>
+    /* Place and size the 3 rings around the rendered symbol */
+    function setupRings() {
+        const mainBox = document.getElementById('main-box');
+        if (!mainBox) return;
+
+        const rect = mainBox.getBoundingClientRect();
+        const cx   = rect.left + rect.width  / 2;
+        const cy   = rect.top  + rect.height / 2;
+
+        /* base = symbol's larger dimension so rings clear the symbol on all sides */
+        const base = Math.max(rect.width, rect.height);
+
+        /* 3 rings: evenly scaled and spaced, close to each other */
+        const configs = [
+            { id: 'ring-1', scale: 1.20, border: Math.round(base * 0.028) },
+            { id: 'ring-2', scale: 1.40, border: Math.round(base * 0.025) },
+            { id: 'ring-3', scale: 1.60, border: Math.round(base * 0.022) },
+        ];
+
+        configs.forEach(({ id, scale, border }) => {
+            const el   = document.getElementById(id);
+            const size = base * scale;
+            el.style.width       = size + 'px';
+            el.style.height      = size + 'px';
+            el.style.borderWidth = Math.max(border, 8) + 'px';
+            el.style.left        = (cx - size / 2) + 'px';
+            el.style.top         = (cy - size / 2) + 'px';
+        });
+    }
+
+    function playLogoAnimation() {
+        gsap.killTweensOf("*");
+        setupRings();
+
+        const tl      = gsap.timeline();
+        const bracket = document.getElementById("bracket-line");
+        const length  = bracket.getTotalLength();
+
+        /* ── reset ── */
+        gsap.set("#symbol-group", { rotationY: 0, opacity: 0, scale: 0.7 });
+        gsap.set(bracket,         { strokeDasharray: length, strokeDashoffset: length });
+        gsap.set("#text-top",     { opacity: 0, x: -30 });
+        gsap.set("#text-panel",   { opacity: 0, scale: 0.85, transformOrigin: "left center" });
+        gsap.set("#slogan",       { opacity: 0, y: 20 });
+        gsap.set("#ring-1, #ring-2, #ring-3", { opacity: 0, rotation: 0 });
+        gsap.set("#flash-overlay",            { opacity: 0 });
+
+        /* ── 0. white burst ── */
+        tl.to("#flash-overlay", { opacity: 1, duration: 0.12, ease: "power3.out" })
+          .to("#flash-overlay", { opacity: 0, duration: 0.55, ease: "power2.in"  });
+
+        /* ── 1. rings spin (staggered, alternating direction) ── */
+        tl.to("#ring-1", { opacity: 1, rotation:  540, duration: 1.0, ease: "power2.inOut" }, 0.08)
+          .to("#ring-2", { opacity: 1, rotation: -480, duration: 1.1, ease: "power2.inOut" }, 0.08)
+          .to("#ring-3", { opacity: 1, rotation:  420, duration: 1.2, ease: "power2.inOut" }, 0.08);
+
+        tl.to("#ring-1", { opacity: 0, duration: 0.30, ease: "power2.in" }, 0.80)
+          .to("#ring-2", { opacity: 0, duration: 0.30, ease: "power2.in" }, 0.90)
+          .to("#ring-3", { opacity: 0, duration: 0.30, ease: "power2.in" }, 1.00);
+
+        /* ── 2. symbol rotates in ── */
+        tl.to("#symbol-group", {
+            opacity: 1, scale: 1, rotationY: 720,
+            duration: 1.05, ease: "power3.out"
+        }, 0.10);
+
+        /* ── 3. bracket draws ── */
+        tl.to(bracket, { strokeDashoffset: 0, duration: 0.55, ease: "power1.inOut" }, "-=0.15");
+
+        /* ── 4. typography ── */
+        tl.to("#text-top",   { opacity: 1, x: 0,    duration: 0.45, ease: "power3.out"          }, "-=0.10")
+          .to("#text-panel", { opacity: 1, scale: 1, duration: 0.60, ease: "elastic.out(1, 0.7)" }, "-=0.30");
+
+        /* ── 5. slogan ── */
+        tl.to("#slogan", { opacity: 1, y: 0, duration: 0.65, ease: "power2.out" }, "-=0.10");
+    }
+
+    window.addEventListener('resize', setupRings);
+    window.addEventListener('load', () => {
+        setupRings();
+        playLogoAnimation();
+    });
+</script>
+
+</body>
+</html>

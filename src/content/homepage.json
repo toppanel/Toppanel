@@ -1,0 +1,22 @@
+{
+  "heroSlides": [
+    {
+      "src": "/images/DRC-S01.jpg",
+      "alt": "스테인리스 큐비클 시스템",
+      "title": "STAINLESS CUBICLE",
+      "sub": "PREMIUM PARTITION SYSTEM"
+    },
+    {
+      "src": "/images/DRC-D20.jpg",
+      "alt": "키즈 큐비클 디자인",
+      "title": "KIDS CUBICLE",
+      "sub": "CUSTOM GRAPHIC SYSTEM"
+    },
+    {
+      "src": "/images/main.png",
+      "alt": "화장실칸막이 시공 현장",
+      "title": "PROJECT SITE",
+      "sub": "REAL INSTALLATION CASE"
+    }
+  ]
+}

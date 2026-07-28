@@ -1,0 +1,33 @@
+{
+  "header": {
+    "title": "다운로드 자료실",
+    "subtitle": "도면, 시방서, 카탈로그, 시험성적서, 설치 매뉴얼을 다운로드할 수 있습니다. 필요한 자료를 찾아보세요."
+  },
+  "files": [
+    { "category": "도면", "name": "LPM 큐비클 표준 도면 (TPL-L Series)", "desc": "기본형·전면천정형·전체천정형 평면·입면 도면 일체", "size": "3.2 MB", "updated": "2024-09" },
+    { "category": "도면", "name": "HPM 큐비클 표준 도면 (TPL-G Series)", "desc": "기본형·전면천정형·전체천정형 평면·입면 도면 일체", "size": "3.4 MB", "updated": "2024-09" },
+    { "category": "도면", "name": "디자인·메탈릭·텍스처 큐비클 도면", "desc": "TPL-D/M/T 시리즈 표준 도면", "size": "4.1 MB", "updated": "2024-06" },
+    { "category": "도면", "name": "스탠·칼라강판 큐비클 도면 (TPL-S/CS)", "desc": "STS·칼라강판 시리즈 평면·입면", "size": "2.8 MB", "updated": "2024-06" },
+    { "category": "도면", "name": "OPENEASY 자동문 설치 도면", "desc": "슬라이딩·이단·접이식 자동문 상세 도면", "size": "5.6 MB", "updated": "2024-10" },
+    { "category": "도면", "name": "어린이용 큐비클 도면 (CUBEE Series)", "desc": "어린이 전용 소형 큐비클 표준 도면", "size": "2.1 MB", "updated": "2023-12" },
+    { "category": "도면", "name": "소변기칸막이 도면 (TPL-UR/URB)", "desc": "일반·강화유리 소변기칸막이 도면", "size": "1.8 MB", "updated": "2024-03" },
+    { "category": "도면", "name": "샤워칸막이·샤워부스 도면 (TPL-SHP/SHB)", "desc": "강화유리 샤워칸막이 및 부스 상세 도면", "size": "2.3 MB", "updated": "2024-03" },
+    { "category": "시방서", "name": "LPM·HPM 큐비클 시방서", "desc": "소재 규격, 치수 허용오차, 시공 기준 명시", "size": "1.1 MB", "updated": "2024-09" },
+    { "category": "시방서", "name": "스탠(STS) 큐비클 시방서", "desc": "SUS 304/316L 소재 기준 및 용접 품질 규격", "size": "0.9 MB", "updated": "2024-06" },
+    { "category": "시방서", "name": "OPENEASY 자동문 시방서", "desc": "전동 구동부 사양, 센서 규격, 전기 배선 기준", "size": "1.4 MB", "updated": "2024-10" },
+    { "category": "시방서", "name": "METROCORE 관급 시방서", "desc": "서울교통공사 규격 준거 시방서 (공공 발주용)", "size": "2.2 MB", "updated": "2024-01" },
+    { "category": "카탈로그", "name": "TopPanel 종합 카탈로그 2024", "desc": "전 제품 라인업 소개, 컬러·마감재 견본 포함", "size": "18.4 MB", "updated": "2024-10" },
+    { "category": "카탈로그", "name": "큐비클 제품군 카탈로그", "desc": "LPM·HPM·디자인·메탈릭·텍스처·스탠·칼라강판", "size": "12.1 MB", "updated": "2024-09" },
+    { "category": "카탈로그", "name": "OPENEASY 도어 시스템 카탈로그", "desc": "수동·자동 슬라이딩/접이식 도어 전 라인업", "size": "8.7 MB", "updated": "2024-10" },
+    { "category": "카탈로그", "name": "특수·주문제작 카탈로그", "desc": "CUBEE·ORDERMADE·METROCORE 라인업", "size": "6.2 MB", "updated": "2024-03" },
+    { "category": "시험성적서", "name": "LPM 큐비클 내구성 시험성적서", "desc": "표면 경도·마모 저항·충격 시험 결과", "size": "0.8 MB", "updated": "2023-11" },
+    { "category": "시험성적서", "name": "HPM 큐비클 내열·내습 시험성적서", "desc": "고온·고습 환경 72시간 노출 시험 결과", "size": "0.9 MB", "updated": "2023-11" },
+    { "category": "시험성적서", "name": "스탠·칼라강판 내식성 시험성적서", "desc": "염수분무 240시간 내식성 시험 결과 (KS D 9502)", "size": "1.0 MB", "updated": "2024-02" },
+    { "category": "시험성적서", "name": "강화유리 파괴 안전 시험성적서", "desc": "충격 시험, 파쇄 형태 안전 확인 결과", "size": "0.7 MB", "updated": "2023-09" },
+    { "category": "시험성적서", "name": "OPENEASY 자동문 안전 시험성적서", "desc": "끼임 방지, 역방향 구동 안전 기능 시험 결과", "size": "1.2 MB", "updated": "2024-08" },
+    { "category": "설치매뉴얼", "name": "LPM·HPM 큐비클 설치 매뉴얼", "desc": "기초 앵커링부터 도어 힌지 조정까지 단계별 가이드", "size": "5.3 MB", "updated": "2024-09" },
+    { "category": "설치매뉴얼", "name": "OPENEASY 자동문 설치·조정 매뉴얼", "desc": "센서 캘리브레이션, 모터 토크 설정 포함", "size": "7.1 MB", "updated": "2024-10" },
+    { "category": "설치매뉴얼", "name": "안심스크린 교체 매뉴얼", "desc": "SUS 하부 안심스크린 현장 교체 방법", "size": "2.4 MB", "updated": "2024-05" },
+    { "category": "설치매뉴얼", "name": "소변기·샤워 칸막이 설치 매뉴얼", "desc": "강화유리 고정 클램프 설치 방법 상세 안내", "size": "3.1 MB", "updated": "2024-03" }
+  ]
+}

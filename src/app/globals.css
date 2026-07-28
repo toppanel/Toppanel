@@ -1,26 +1,58 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --radius: 0.5rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --muted-foreground: oklch(0.556 0 0);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-ink:         #111111;
+  --color-ink-soft:    #333333;
+  --color-body:        #555555;
+  --color-muted:       #999999;
+  --color-white:       #FFFFFF;
+  --color-off:         #F5F5F3;
+  --color-dark:        #141414;
+  --color-border:      #E0E0E0;
+  --color-border-dark: #2A2A2A;
+  --color-navy:        #1D3557;
+  --color-navy-hover:  #2A4A7F;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #FFFFFF;
+  color: #111111;
+  font-family: 'Pretendard', 'Apple SD Gothic Neo', -apple-system, sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid #1D3557;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Hero "Cubicle Universe" orbit — staggered entrance for the hub/rings/nodes.
+   Animates the standalone `scale` property (not `transform`) so it composes
+   cleanly with elements that already use `transform` for centering/hover. */
+@keyframes orbit-pop {
+  from { opacity: 0; scale: 0.55; }
+  to   { opacity: 1; scale: 1; }
+}
+@keyframes orbit-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }

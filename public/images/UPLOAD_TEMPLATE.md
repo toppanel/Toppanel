@@ -4,7 +4,7 @@ Use this template when adding new product images.
 
 ## Folder structure
 
-- /images/products/cubicle/
+- /images/products/cubicle/<model-slug>/ — split by model type (see below), not flat
 - /images/products/accessible/
 - /images/products/glass/
 - /images/products/changing-room/
@@ -13,6 +13,22 @@ Use this template when adding new product images.
 - /images/projects/
 - /images/brand/
 - /images/hero/
+
+Cubicle has far more model types and photos than the other categories,
+so its files live one level deeper — a subfolder per model slug — to
+stay manageable at scale:
+
+- /images/products/cubicle/basic/
+- /images/products/cubicle/design/
+- /images/products/cubicle/kids/
+- /images/products/cubicle/metal/
+- /images/products/cubicle/metro/
+- /images/products/cubicle/ordermade/
+- /images/products/cubicle/stainless/
+- /images/products/cubicle/urinal/
+
+Adding a new cubicle model type? Create its subfolder here and add a
+matching entry in the `models` array in `src/lib/products.ts`.
 
 ## Recommended naming pattern
 
@@ -24,14 +40,14 @@ Use this template when adding new product images.
 
 ### Cubicle
 
-- cubicle-stainless-01.jpg
-- cubicle-stainless-02.jpg
-- cubicle-kids-01.jpg
-- cubicle-kids-02.jpg
-- cubicle-metro-01.jpg
-- cubicle-basic-01.jpg
-- cubicle-design-01.jpg
-- cubicle-urinal-01.jpg
+- cubicle/stainless/cubicle-stainless-01.jpg
+- cubicle/stainless/cubicle-stainless-02.jpg
+- cubicle/kids/cubicle-kids-01.jpg
+- cubicle/kids/cubicle-kids-02.jpg
+- cubicle/metro/cubicle-metro-01.jpg
+- cubicle/basic/cubicle-basic-01.jpg
+- cubicle/design/cubicle-design-01.jpg
+- cubicle/urinal/cubicle-urinal-01.jpg
 
 ### Accessible
 

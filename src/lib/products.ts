@@ -29,24 +29,27 @@ const FALLBACK_IMAGE = `${PRODUCT_IMAGE_BASE}/placeholder.jpg`;
 // A starter image catalog that follows a realistic folder-and-file naming pattern.
 // Each category already has multiple example filenames so the structure is easy to
 // expand into a full product photo library later.
-// Kept in sync with the real files under public/images/products/<category>/.
+// Kept in sync with the real files under public/images/products/<category>/ — for
+// `cubicle`, which has many model types, files are further split one subfolder per
+// model slug (e.g. `cubicle/design/cubicle-design-01.jpg`) so it stays manageable
+// at scale; other categories stay flat until they need the same treatment.
 // Used as a fallback pool for any model that doesn't have its own explicit
 // `images` list yet (see Model.images).
 const PRODUCT_IMAGES: Record<string, string[]> = {
   cubicle: [
-    "cubicle-metro-01.jpg", "cubicle-metro-02.jpg", "cubicle-metro-03.png", "cubicle-metro-04.jpg", "cubicle-metro-05.jpg",
-    "cubicle-basic-01.jpg", "cubicle-basic-02.jpg", "cubicle-basic-03.jpg", "cubicle-basic-04.jpg", "cubicle-basic-05.jpg",
-    "cubicle-basic-06.jpg", "cubicle-basic-07.jpg", "cubicle-basic-08.png", "cubicle-basic-09.png", "cubicle-basic-10.png",
-    "cubicle-basic-11.png", "cubicle-basic-12.png", "cubicle-basic-13.jpg", "cubicle-basic-14.png", "cubicle-basic-15.png",
-    "cubicle-basic-16.jpg", "cubicle-basic-17.png", "cubicle-basic-18.png", "cubicle-basic-19.jpg",
-    "cubicle-metal-01.jpg", "cubicle-metal-02.png", "cubicle-metal-03.png", "cubicle-metal-04.jpg",
-    "cubicle-design-01.jpg", "cubicle-design-02.jpg", "cubicle-design-03.jpg", "cubicle-design-04.jpg", "cubicle-design-05.jpg",
-    "cubicle-design-06.jpg", "cubicle-design-07.jpg", "cubicle-design-08.jpg", "cubicle-design-09.jpg", "cubicle-design-10.jpg",
-    "cubicle-kids-01.png",
-    "cubicle-stainless-01.jpg", "cubicle-stainless-02.jpg", "cubicle-stainless-03.jpg",
-    "cubicle-urinal-01.jpg", "cubicle-urinal-02.png",
-    "cubicle-ordermade-01.jpg", "cubicle-ordermade-02.jpg", "cubicle-ordermade-03.jpg",
-    "cubicle-ordermade-04.jpg", "cubicle-ordermade-05.png", "cubicle-ordermade-06.jpg", "cubicle-ordermade-07.jpg",
+    "metro/cubicle-metro-01.jpg", "metro/cubicle-metro-02.jpg", "metro/cubicle-metro-03.png", "metro/cubicle-metro-04.jpg", "metro/cubicle-metro-05.jpg",
+    "basic/cubicle-basic-01.jpg", "basic/cubicle-basic-02.jpg", "basic/cubicle-basic-03.jpg", "basic/cubicle-basic-04.jpg", "basic/cubicle-basic-05.jpg",
+    "basic/cubicle-basic-06.jpg", "basic/cubicle-basic-07.jpg", "basic/cubicle-basic-08.png", "basic/cubicle-basic-09.png", "basic/cubicle-basic-10.png",
+    "basic/cubicle-basic-11.png", "basic/cubicle-basic-12.png", "basic/cubicle-basic-13.jpg", "basic/cubicle-basic-14.png", "basic/cubicle-basic-15.png",
+    "basic/cubicle-basic-16.jpg", "basic/cubicle-basic-17.png", "basic/cubicle-basic-18.png", "basic/cubicle-basic-19.jpg",
+    "metal/cubicle-metal-01.jpg", "metal/cubicle-metal-02.png", "metal/cubicle-metal-03.png", "metal/cubicle-metal-04.jpg",
+    "design/cubicle-design-01.jpg", "design/cubicle-design-02.jpg", "design/cubicle-design-03.jpg", "design/cubicle-design-04.jpg", "design/cubicle-design-05.jpg",
+    "design/cubicle-design-06.jpg", "design/cubicle-design-07.jpg", "design/cubicle-design-08.jpg", "design/cubicle-design-09.jpg", "design/cubicle-design-10.jpg",
+    "kids/cubicle-kids-01.png",
+    "stainless/cubicle-stainless-01.jpg", "stainless/cubicle-stainless-02.jpg", "stainless/cubicle-stainless-03.jpg",
+    "urinal/cubicle-urinal-01.jpg", "urinal/cubicle-urinal-02.png",
+    "ordermade/cubicle-ordermade-01.jpg", "ordermade/cubicle-ordermade-02.jpg", "ordermade/cubicle-ordermade-03.jpg",
+    "ordermade/cubicle-ordermade-04.jpg", "ordermade/cubicle-ordermade-05.png", "ordermade/cubicle-ordermade-06.jpg", "ordermade/cubicle-ordermade-07.jpg",
   ].map((f) => `${PRODUCT_IMAGE_BASE}/cubicle/${f}`),
   accessible: [
     "accessible-sliding-01.jpg", "accessible-sliding-02.jpg", "accessible-double-sliding-01.jpg",
@@ -121,46 +124,46 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     label: "화장실칸막이",
     labelSub: "TOILET CUBICLE",
     description: "불연·기본·메탈·디자인·어린이·스테인리스 등 다양한 소재와 마감으로 모든 공간 요건에 맞는 화장실 칸막이 라인업입니다.",
-    image: "cubicle-design-01.jpg",
+    image: "design/cubicle-design-01.jpg",
     models: [
       {
         slug: "metro", code: "METRO", name: "불연 METRO", nameKo: "불연 METRO",
-        images: ["cubicle-metro-01.jpg", "cubicle-metro-02.jpg", "cubicle-metro-03.png", "cubicle-metro-04.jpg", "cubicle-metro-05.jpg"],
+        images: ["metro/cubicle-metro-01.jpg", "metro/cubicle-metro-02.jpg", "metro/cubicle-metro-03.png", "metro/cubicle-metro-04.jpg", "metro/cubicle-metro-05.jpg"],
       },
       {
         slug: "basic", code: "BASIC", name: "기본 BASIC", nameKo: "기본 BASIC",
         images: [
-          "cubicle-basic-01.jpg", "cubicle-basic-02.jpg", "cubicle-basic-03.jpg", "cubicle-basic-04.jpg", "cubicle-basic-05.jpg",
-          "cubicle-basic-06.jpg", "cubicle-basic-07.jpg", "cubicle-basic-08.png", "cubicle-basic-09.png", "cubicle-basic-10.png",
-          "cubicle-basic-11.png", "cubicle-basic-12.png", "cubicle-basic-13.jpg", "cubicle-basic-14.png", "cubicle-basic-15.png",
-          "cubicle-basic-16.jpg", "cubicle-basic-17.png", "cubicle-basic-18.png", "cubicle-basic-19.jpg",
+          "basic/cubicle-basic-01.jpg", "basic/cubicle-basic-02.jpg", "basic/cubicle-basic-03.jpg", "basic/cubicle-basic-04.jpg", "basic/cubicle-basic-05.jpg",
+          "basic/cubicle-basic-06.jpg", "basic/cubicle-basic-07.jpg", "basic/cubicle-basic-08.png", "basic/cubicle-basic-09.png", "basic/cubicle-basic-10.png",
+          "basic/cubicle-basic-11.png", "basic/cubicle-basic-12.png", "basic/cubicle-basic-13.jpg", "basic/cubicle-basic-14.png", "basic/cubicle-basic-15.png",
+          "basic/cubicle-basic-16.jpg", "basic/cubicle-basic-17.png", "basic/cubicle-basic-18.png", "basic/cubicle-basic-19.jpg",
         ],
       },
       {
         slug: "metal", code: "METAL", name: "메탈 METAL", nameKo: "메탈 METAL",
-        images: ["cubicle-metal-01.jpg", "cubicle-metal-02.png", "cubicle-metal-03.png", "cubicle-metal-04.jpg"],
+        images: ["metal/cubicle-metal-01.jpg", "metal/cubicle-metal-02.png", "metal/cubicle-metal-03.png", "metal/cubicle-metal-04.jpg"],
       },
       {
         slug: "design", code: "DESIGN", name: "디자인 DESIGN", nameKo: "디자인 DESIGN",
-        images: Array.from({ length: 42 }, (_, i) => `cubicle-design-${String(i + 1).padStart(2, "0")}.jpg`),
+        images: Array.from({ length: 42 }, (_, i) => `design/cubicle-design-${String(i + 1).padStart(2, "0")}.jpg`),
       },
       {
         slug: "kids", code: "KIDS", name: "어린이 KIDS", nameKo: "어린이 KIDS",
-        images: ["cubicle-kids-01.png"],
+        images: ["kids/cubicle-kids-01.png"],
       },
       {
         slug: "stainless", code: "STAINLESS", name: "스테인리스 STAINLESS", nameKo: "스테인리스 STAINLESS",
-        images: ["cubicle-stainless-01.jpg", "cubicle-stainless-02.jpg", "cubicle-stainless-03.jpg"],
+        images: ["stainless/cubicle-stainless-01.jpg", "stainless/cubicle-stainless-02.jpg", "stainless/cubicle-stainless-03.jpg"],
       },
       {
         slug: "urinal", code: "URINAL", name: "소변기칸막이", nameKo: "소변기칸막이",
-        images: ["cubicle-urinal-01.jpg", "cubicle-urinal-02.png"],
+        images: ["urinal/cubicle-urinal-01.jpg", "urinal/cubicle-urinal-02.png"],
       },
       {
         slug: "ordermade", code: "ORDERMADE", name: "주문제작형 ORDERMADE", nameKo: "주문제작형 ORDERMADE",
         images: [
-          "cubicle-ordermade-01.jpg", "cubicle-ordermade-02.jpg", "cubicle-ordermade-03.jpg",
-          "cubicle-ordermade-04.jpg", "cubicle-ordermade-05.png", "cubicle-ordermade-06.jpg", "cubicle-ordermade-07.jpg",
+          "ordermade/cubicle-ordermade-01.jpg", "ordermade/cubicle-ordermade-02.jpg", "ordermade/cubicle-ordermade-03.jpg",
+          "ordermade/cubicle-ordermade-04.jpg", "ordermade/cubicle-ordermade-05.png", "ordermade/cubicle-ordermade-06.jpg", "ordermade/cubicle-ordermade-07.jpg",
         ],
       },
     ],

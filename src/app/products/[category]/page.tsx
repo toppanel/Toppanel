@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
-import { getCategoryBySlug, PRODUCT_CATEGORIES } from "@/lib/products";
+import Image from "next/image";
+import Link from "next/link";
+import { FALLBACK_IMAGE, getCategoryBySlug, getModelImage, PRODUCT_CATEGORIES } from "@/lib/products";
 import Sidebar from "@/components/layout/Sidebar";
 import PageBreadcrumb from "@/components/layout/PageBreadcrumb";
 
@@ -63,24 +65,42 @@ export default async function ProductCategoryPage({
           {/* Model grid */}
           <div className="px-5 sm:px-8 lg:px-12 py-14">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {cat.models.map((model) => (
+              {cat.models.map((model) => {
+                const image = getModelImage(model);
+                const hasRealImage = image !== FALLBACK_IMAGE;
+
+                return (
                 <div
                   key={model.code}
                   className="bg-white border border-[#e0dbd4] rounded-sm overflow-hidden flex flex-col"
                 >
-                  {/* Image placeholder */}
-                  <div className="aspect-4/3 bg-[#f5f3f0] flex items-center justify-center border-b border-[#e0dbd4]">
-                    <div className="text-center">
-                      <div className="w-12 h-12 rounded-full bg-[#e0dbd4] flex items-center justify-center mx-auto mb-2">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a09990" strokeWidth="1.5">
-                          <rect x="3" y="3" width="18" height="18" rx="2" />
-                          <circle cx="8.5" cy="8.5" r="1.5" />
-                          <path d="M21 15l-5-5L5 21" />
-                        </svg>
+                  <Link
+                    href={`/products/${cat.slug}/${model.slug}`}
+                    className="group relative block aspect-4/3 overflow-hidden border-b border-[#e0dbd4]"
+                  >
+                    {hasRealImage ? (
+                      <Image
+                        src={image}
+                        alt={model.nameKo}
+                        fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-[#f5f3f0] flex items-center justify-center">
+                        <div className="text-center">
+                          <div className="w-12 h-12 rounded-full bg-[#e0dbd4] flex items-center justify-center mx-auto mb-2">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a09990" strokeWidth="1.5">
+                              <rect x="3" y="3" width="18" height="18" rx="2" />
+                              <circle cx="8.5" cy="8.5" r="1.5" />
+                              <path d="M21 15l-5-5L5 21" />
+                            </svg>
+                          </div>
+                          <p className="text-[10px] text-muted tracking-wide">이미지 준비 중</p>
+                        </div>
                       </div>
-                      <p className="text-[10px] text-muted tracking-wide">이미지 준비 중</p>
-                    </div>
-                  </div>
+                    )}
+                  </Link>
 
                   {/* Model info */}
                   <div className="p-5 flex flex-col gap-3 flex-1">
@@ -109,7 +129,8 @@ export default async function ProductCategoryPage({
                     </div>
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </main>

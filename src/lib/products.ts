@@ -24,7 +24,7 @@ const PRODUCT_IMAGE_BASE = "/images/products";
 const PROJECT_IMAGE_BASE = "/images/projects";
 
 // Fallback image used until a real product photo exists for a given model/category.
-const FALLBACK_IMAGE = `${PRODUCT_IMAGE_BASE}/placeholder.jpg`;
+export const FALLBACK_IMAGE = `${PRODUCT_IMAGE_BASE}/placeholder.jpg`;
 
 // A starter image catalog that follows a realistic folder-and-file naming pattern.
 // Each category already has multiple example filenames so the structure is easy to

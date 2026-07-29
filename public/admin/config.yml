@@ -1,13 +1,13 @@
 # Decap CMS config — served at /admin. Edits here go straight to the
-# src/content/*.json files that the site's pages import at build time.
+# src/content/*.json files that the site's pages import at build time,
+# which the self-hosted runner then builds and FTP-deploys automatically.
 #
-# TODO once the GitHub repo exists: replace `repo` below with
-# "owner/repo-name". TODO once the OAuth relay is deployed to Vercel:
-# replace `base_url` with that deployment's URL.
+# TODO once the OAuth relay is deployed to Vercel: replace `base_url`
+# below with that deployment's URL (see CMS_SETUP.md).
 
 backend:
   name: github
-  repo: YOUR_GITHUB_USERNAME/toppanel-home
+  repo: toppanel/Toppanel
   branch: main
   base_url: https://REPLACE-WITH-YOUR-VERCEL-OAUTH-RELAY.vercel.app
   auth_endpoint: auth

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import PageBreadcrumb from "@/components/layout/PageBreadcrumb";
 import HistoryTimeline from "@/components/about/HistoryTimeline";
 import AboutSidebar from "@/components/about/AboutSidebar";
 import aboutContent from "@/content/about.json";
@@ -11,31 +12,46 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-[#f5f2ee]">
 
-      {/* Page header — full width with background image */}
-      <div className="relative border-b border-[#e0dbd4] min-h-80 lg:min-h-100 flex flex-col justify-center px-6 lg:px-12 py-16 overflow-hidden">
-        <Image
-          src={header.image}
-          alt="About TOPPANEL"
-          fill
-          sizes="100vw"
-          className="object-cover object-center"
-          priority
-        />
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/55" />
-        {/* Content */}
-        <div className="relative z-10">
-          <p className="text-[11px] font-semibold tracking-[0.2em] text-white/60 uppercase mb-3">
+      {/* Page header — photo banner once header.image is set, plain header until then */}
+      {header.image ? (
+        <div className="relative border-b border-[#e0dbd4] min-h-75 flex flex-col justify-center px-6 lg:px-12 py-16 overflow-hidden">
+          <Image
+            src={header.image}
+            alt="About TOPPANEL"
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+            priority
+          />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-black/55" />
+          {/* Content */}
+          <div className="relative z-10">
+            <p className="text-[11px] font-semibold tracking-[0.2em] text-white/60 uppercase mb-3">
+              ABOUT TOPPANEL
+            </p>
+            <h1 className="text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
+              {header.title}
+            </h1>
+            <p className="text-white/70 text-sm leading-relaxed max-w-xl">
+              {header.subtitle}
+            </p>
+          </div>
+        </div>
+      ) : (
+        <div className="bg-white border-b border-[#e0dbd4] px-6 lg:px-12 py-10">
+          <PageBreadcrumb />
+          <p className="text-[11px] font-semibold tracking-[0.2em] text-[#888880] uppercase mb-3">
             ABOUT TOPPANEL
           </p>
-          <h1 className="text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
+          <h1 className="text-3xl lg:text-4xl font-bold text-[#111111] tracking-tight mb-4">
             {header.title}
           </h1>
-          <p className="text-white/70 text-sm leading-relaxed max-w-xl">
+          <p className="text-[#555555] text-sm leading-relaxed max-w-xl">
             {header.subtitle}
           </p>
         </div>
-      </div>
+      )}
 
       {/* Sidebar + content */}
       <div className="max-w-360 mx-auto w-full lg:grid lg:grid-cols-[260px_1fr] min-h-screen">
@@ -101,32 +117,63 @@ export default function AboutPage() {
       <section id="certifications" className="scroll-mt-32 border-b border-[#e0dbd4] py-16">
         <div className="max-w-6xl mx-auto px-6 lg:px-12">
           <p className="text-[11px] font-semibold tracking-[0.2em] text-[#888880] uppercase mb-4">
-            CERTIFICATIONS &amp; PATENTS
+            PATENTS &amp; DESIGN REGISTRATIONS
           </p>
-          <h2 className="text-2xl font-bold text-ink tracking-tight mb-10">
-            인증 / 특허 / 시험성적
+          <h2 className="text-2xl font-bold text-ink tracking-tight mb-2">
+            특허 · 디자인등록
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {CERTS.map((cert, i) => (
-              <div key={i} className="bg-white border border-[#e0dbd4] p-6 flex flex-col gap-3">
-                <div className="w-12 h-14 bg-[#f0ece6] border border-[#e0dbd4] flex items-center justify-center">
-                  <svg width="20" height="24" viewBox="0 0 20 24" fill="none" stroke="#a09990" strokeWidth="1.5">
-                    <path d="M4 2h8l4 4v16a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z" />
-                    <path d="M12 2v4h4" />
-                    <line x1="6" y1="10" x2="14" y2="10" />
-                    <line x1="6" y1="18" x2="10" y2="18" />
-                  </svg>
+          <p className="text-xs text-[#888880] mb-8">
+            인증서·시험성적서는 <a href="/download" className="underline hover:text-ink">자료실</a>에서 확인하실 수 있습니다.
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            {CERTS.map((cert, i) => {
+              const file = cert.file?.trim();
+              const isPdf = !!file && file.toLowerCase().endsWith(".pdf");
+              const isImage = !!file && !isPdf;
+              const src = file ? `/images/certifications/${file}` : "";
+
+              return (
+                <div key={i} className="group relative aspect-3/4 border border-[#e0dbd4] overflow-hidden bg-white">
+                  {isImage ? (
+                    <a href={src} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={src}
+                        alt={`${cert.label} ${cert.sub}`}
+                        className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </a>
+                  ) : (
+                    <a
+                      href={src}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-full w-full flex-col items-center justify-center gap-3 bg-[#f0ece6] transition-colors group-hover:bg-[#e8e2d9]"
+                    >
+                      <svg width="30" height="36" viewBox="0 0 20 24" fill="none" stroke="#a09990" strokeWidth="1.3">
+                        <path d="M4 2h8l4 4v16a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z" />
+                        <path d="M12 2v4h4" />
+                        <line x1="6" y1="10" x2="14" y2="10" />
+                        <line x1="6" y1="14" x2="14" y2="14" />
+                        <line x1="6" y1="18" x2="10" y2="18" />
+                      </svg>
+                      <span className="text-[10px] font-semibold tracking-[0.15em] text-[#a09990] uppercase underline underline-offset-2">
+                        PDF 보기 ↗
+                      </span>
+                    </a>
+                  )}
+
+                  {/* Metadata scrim — pinned to the bottom of every card, image or PDF alike */}
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-linear-to-t from-black/80 via-black/45 to-transparent px-3 pt-8 pb-3">
+                    <span className="inline-block text-[9px] font-bold tracking-[0.16em] text-white/80 bg-white/15 px-1.5 py-0.5 mb-1.5 backdrop-blur-sm">
+                      {cert.badge}
+                    </span>
+                    <p className="text-[13px] font-bold text-white leading-tight">{cert.label}</p>
+                    <p className="text-[11px] text-white/70 mt-0.5">{cert.sub}</p>
+                  </div>
                 </div>
-                <div>
-                  <span className="text-[10px] font-bold tracking-[0.18em] text-white bg-ink px-2 py-0.5 inline-block mb-2">
-                    {cert.badge}
-                  </span>
-                  <p className="text-sm font-bold text-ink">{cert.label}</p>
-                  <p className="text-xs text-[#888880] mt-0.5">{cert.sub}</p>
-                </div>
-                <p className="text-[11px] text-[#b0afa9] mt-auto">이미지 준비 중</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

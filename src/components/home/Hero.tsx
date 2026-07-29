@@ -46,6 +46,30 @@ const F_NR_INNER = 0.119;
 const F_R_OUTER = 0.843;
 const F_NR_OUTER = 0.173;
 
+function polarToCartesian(r: number, deg: number) {
+  const rad = (deg * Math.PI) / 180;
+  return { x: Math.round(r * Math.cos(rad) * 100) / 100, y: Math.round(r * Math.sin(rad) * 100) / 100 };
+}
+
+// SVG arc path from startDeg to endDeg (degrees, increasing = clockwise on screen).
+function describeArc(r: number, startDeg: number, endDeg: number) {
+  const start = polarToCartesian(r, startDeg);
+  const end = polarToCartesian(r, endDeg);
+  const largeArc = (((endDeg - startDeg) % 360) + 360) % 360 > 180 ? 1 : 0;
+  return `M ${start.x} ${start.y} A ${r} ${r} 0 ${largeArc} 1 ${end.x} ${end.y}`;
+}
+
+// Ring drawn as separate arcs with a gap centered on each node's angle, so the
+// node's icon + label sit in open space instead of the ring line cutting through them.
+function ringArcs(r: number, nodeAngles: number[], nodeR: number) {
+  const gapDeg = (Math.asin(Math.min(1, (nodeR * 1.15) / r)) * 180) / Math.PI * 2;
+  const sorted = [...nodeAngles].sort((a, b) => a - b);
+  return sorted.map((angle, i) => {
+    const next = sorted[(i + 1) % sorted.length] + (i === sorted.length - 1 ? 360 : 0);
+    return describeArc(r, angle + gapDeg / 2, next - gapDeg / 2);
+  });
+}
+
 export default function Hero() {
   const [slide, setSlide] = useState(0);
   const stageRef = useRef<HTMLDivElement>(null);
@@ -56,7 +80,10 @@ export default function Hero() {
     if (!el) return;
     const measure = () => {
       const { clientWidth: w, clientHeight: h } = el;
-      setHalf(Math.max(120, Math.min(w, h) / 2 - 6));
+      // *1.12 scales the whole diagram up a bit beyond its snug fit — the SVG and
+      // node layers all use overflow-visible, so this reads as a slightly larger
+      // diagram rather than getting clipped by the stage box.
+      setHalf(Math.max(120, (Math.min(w, h) / 2 - 6) * 1.12));
     };
     measure();
     const ro = new ResizeObserver(measure);
@@ -146,52 +173,13 @@ export default function Hero() {
                   className="absolute inset-0 w-full h-full overflow-visible"
                   style={{ animation: "orbit-fade 0.9s ease-out both" }}
                 >
-                  <circle r={rInner} fill="none" stroke="#9A9A9A" strokeWidth={1} />
-                  <circle r={rOuter} fill="none" stroke="#9A9A9A" strokeWidth={1} />
-                  {/* hub → inner node spokes */}
-                  {INNER_NODES.map((n) => {
-                    const rad = (n.angle * Math.PI) / 180;
-                    const x = rnd(rInner * Math.cos(rad));
-                    const y = rnd(rInner * Math.sin(rad));
-                    return (
-                      <line key={n.label} x1={0} y1={0} x2={x} y2={y} stroke="#E0E0E0" strokeWidth={1} />
-                    );
-                  })}
-                  {/* inner ring → outer node spokes, same treatment as the hub spokes above */}
-                  {OUTER_NODES.map((n) => {
-                    const rad = (n.angle * Math.PI) / 180;
-                    const x1 = rnd(rInner * Math.cos(rad));
-                    const y1 = rnd(rInner * Math.sin(rad));
-                    const x2 = rnd(rOuter * Math.cos(rad));
-                    const y2 = rnd(rOuter * Math.sin(rad));
-                    return (
-                      <line key={n.label} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#E0E0E0" strokeWidth={1} />
-                    );
-                  })}
+                  {ringArcs(rInner, INNER_NODES.map((n) => n.angle), nrInner).map((d, i) => (
+                    <path key={`inner-arc-${i}`} d={d} fill="none" stroke="#9A9A9A" strokeWidth={1} />
+                  ))}
+                  {ringArcs(rOuter, OUTER_NODES.map((n) => n.angle), nrOuter).map((d, i) => (
+                    <path key={`outer-arc-${i}`} d={d} fill="none" stroke="#9A9A9A" strokeWidth={1} />
+                  ))}
                 </svg>
-
-                {/* decorative orbiting dots — continuous, purely ambient motion.
-                    Each sits in its own rotating full-size layer so its position
-                    sweeps around the ring; the dot itself has no orientation so
-                    it never needs counter-rotating like the node labels would. */}
-                <div
-                  className="absolute inset-0 animate-spin pointer-events-none"
-                  style={{ animationDuration: "34s", animationTimingFunction: "linear" }}
-                >
-                  <span
-                    className="absolute left-1/2 top-1/2 block h-1.75 w-1.75 rounded-full bg-navy shadow-[0_0_8px_2px_rgba(29,53,87,0.45)]"
-                    style={{ transform: `translate(-50%, calc(-50% - ${rInner}px))` }}
-                  />
-                </div>
-                <div
-                  className="absolute inset-0 animate-spin pointer-events-none"
-                  style={{ animationDuration: "48s", animationDirection: "reverse", animationTimingFunction: "linear" }}
-                >
-                  <span
-                    className="absolute left-1/2 top-1/2 block h-1.75 w-1.75 rounded-full bg-navy shadow-[0_0_8px_2px_rgba(29,53,87,0.45)]"
-                    style={{ transform: `translate(-50%, calc(-50% - ${rOuter}px))` }}
-                  />
-                </div>
 
                 {/* center hub */}
                 <Link
@@ -226,7 +214,7 @@ export default function Hero() {
                     <Link
                       key={n.label}
                       href={n.href}
-                      className="group absolute flex flex-col items-center justify-center gap-1.5 text-center rounded-full bg-white border border-[#9A9A9A] transition-all duration-200 hover:border-navy hover:shadow-[0_10px_24px_-8px_rgba(29,53,87,0.35)] hover:scale-110"
+                      className="group absolute flex flex-col items-center justify-center gap-1.5 text-center rounded-full bg-transparent border border-transparent transition-all duration-200 hover:bg-white hover:border-navy hover:shadow-[0_10px_24px_-8px_rgba(29,53,87,0.35)] hover:scale-110"
                       style={{
                         left: `${xPct}%`,
                         top: `${yPct}%`,
@@ -241,7 +229,7 @@ export default function Hero() {
                       <n.Icon size={18} strokeWidth={1.7} className="text-ink group-hover:text-navy transition-colors shrink-0" />
                       <span
                         className="font-semibold tracking-wide text-[#9A9A9A] group-hover:text-navy transition-colors leading-tight"
-                        style={{ fontSize: 15, wordBreak: "keep-all" }}
+                        style={{ fontSize: 17, wordBreak: "keep-all" }}
                       >
                         {n.label}
                       </span>
@@ -258,7 +246,7 @@ export default function Hero() {
                     <Link
                       key={n.label}
                       href={n.href}
-                      className="group absolute flex flex-col items-center justify-center gap-1.5 text-center rounded-full bg-white border border-[#9A9A9A] transition-all duration-200 hover:border-navy hover:shadow-[0_10px_24px_-8px_rgba(29,53,87,0.35)] hover:scale-110"
+                      className="group absolute flex flex-col items-center justify-center gap-1.5 text-center rounded-full bg-transparent border border-transparent transition-all duration-200 hover:bg-white hover:border-navy hover:shadow-[0_10px_24px_-8px_rgba(29,53,87,0.35)] hover:scale-110"
                       style={{
                         left: `${xPct}%`,
                         top: `${yPct}%`,
@@ -273,7 +261,7 @@ export default function Hero() {
                       <n.Icon size={18} strokeWidth={1.7} className="text-ink group-hover:text-navy transition-colors shrink-0" />
                       <span
                         className="font-semibold tracking-wide text-[#9A9A9A] group-hover:text-navy transition-colors leading-tight"
-                        style={{ fontSize: 15, wordBreak: "keep-all" }}
+                        style={{ fontSize: 17, wordBreak: "keep-all" }}
                       >
                         {n.label}
                       </span>

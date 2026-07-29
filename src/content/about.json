@@ -2,7 +2,7 @@
   "header": {
     "title": "회사소개",
     "subtitle": "20년 가까운 현장 경험으로 완성한 화장실 큐비클 전문 브랜드, TopPanel의 철학과 역사를 소개합니다.",
-    "image": "/images/About Us.png"
+    "image": "/images/page-headers/about.png"
   },
   "philosophy": {
     "heading": "공간의 품격은\n디테일에서 시작됩니다",
@@ -46,12 +46,12 @@
     ]
   },
   "certifications": [
-    { "label": "특허증", "sub": "안심스크린 결합 구조", "badge": "특허" },
-    { "label": "특허증", "sub": "자동문 슬라이딩 모듈", "badge": "특허" },
-    { "label": "ISO 9001", "sub": "품질경영시스템 인증", "badge": "인증" },
-    { "label": "시험성적서", "sub": "LPM 큐비클 내구성 시험", "badge": "성적서" },
-    { "label": "시험성적서", "sub": "HPM 큐비클 표면 경도 시험", "badge": "성적서" },
-    { "label": "시험성적서", "sub": "스탠·칼라강판 내식성 시험", "badge": "성적서" }
+    { "label": "특허증", "sub": "제10-1896241호", "badge": "특허", "file": "특허증-GMS.jpg" },
+    { "label": "특허증", "sub": "제10-2959054호", "badge": "특허", "file": "특허증.png" },
+    { "label": "특허등록결정서", "sub": "P20250092-KR0", "badge": "특허", "file": "탑판넬-특허등록결정서.pdf" },
+    { "label": "디자인등록증", "sub": "제30-0786685호", "badge": "디자인", "file": "디자인등록증-01.jpg" },
+    { "label": "디자인등록증", "sub": "제30-0786751호", "badge": "디자인", "file": "디자인등록증-02.jpg" },
+    { "label": "디자인등록증", "sub": "제30-0985116호", "badge": "디자인", "file": "디자인등록증-03.jpg" }
   ],
   "equipment": [
     { "title": "CNC 가공 설비", "desc": "고정밀 CNC 라우터로 패널 절단·가공. 오차 ±0.1mm 이내 가공 품질 보장." },

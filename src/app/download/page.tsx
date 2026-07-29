@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import PageBreadcrumb from "@/components/layout/PageBreadcrumb";
 import downloadsContent from "@/content/downloads.json";
 
@@ -10,11 +11,12 @@ type FileItem = {
   size: string;
   updated: string;
   category: string;
+  file?: string;
 };
 
-const { header, files: FILES } = downloadsContent as { header: { title: string; subtitle: string }; files: FileItem[] };
+const { header, files: FILES } = downloadsContent as { header: { title: string; subtitle: string; image?: string }; files: FileItem[] };
 
-const TABS = ["전체", "도면", "시방서", "카탈로그", "시험성적서", "설치매뉴얼"] as const;
+const TABS = ["전체", "도면", "시방서", "카탈로그", "시험성적서", "인증", "설치매뉴얼"] as const;
 type Tab = (typeof TABS)[number];
 
 function DocIcon() {
@@ -46,19 +48,37 @@ export default function DownloadPage() {
   return (
     <div className="min-h-screen bg-[#f5f2ee]">
 
-      {/* Page header */}
-      <div className="bg-white border-b border-[#e0dbd4] px-6 lg:px-16 py-10">
-        <PageBreadcrumb />
-        <p className="text-[11px] font-semibold tracking-[0.2em] text-[#888880] uppercase mb-2">
-          RESOURCES
-        </p>
-        <h1 className="text-3xl lg:text-4xl font-bold text-[#111111] tracking-tight mb-3">
-          {header.title}
-        </h1>
-        <p className="text-[#555555] text-sm leading-relaxed max-w-xl">
-          {header.subtitle}
-        </p>
-      </div>
+      {/* Page header — photo banner once header.image is set, plain header until then */}
+      {header.image ? (
+        <div className="relative border-b border-[#e0dbd4] min-h-75 flex flex-col justify-center px-6 lg:px-16 py-12 overflow-hidden">
+          <Image src={header.image} alt="" fill sizes="100vw" className="object-cover object-center" priority />
+          <div className="absolute inset-0 bg-black/55" />
+          <div className="relative z-10">
+            <p className="text-[11px] font-semibold tracking-[0.2em] text-white/60 uppercase mb-2">
+              RESOURCES
+            </p>
+            <h1 className="text-3xl lg:text-4xl font-bold text-white tracking-tight mb-3">
+              {header.title}
+            </h1>
+            <p className="text-white/70 text-sm leading-relaxed max-w-xl">
+              {header.subtitle}
+            </p>
+          </div>
+        </div>
+      ) : (
+        <div className="bg-white border-b border-[#e0dbd4] px-6 lg:px-16 py-10">
+          <PageBreadcrumb />
+          <p className="text-[11px] font-semibold tracking-[0.2em] text-[#888880] uppercase mb-2">
+            RESOURCES
+          </p>
+          <h1 className="text-3xl lg:text-4xl font-bold text-[#111111] tracking-tight mb-3">
+            {header.title}
+          </h1>
+          <p className="text-[#555555] text-sm leading-relaxed max-w-xl">
+            {header.subtitle}
+          </p>
+        </div>
+      )}
 
       {/* Tab filter */}
       <div className="bg-white border-b border-[#e0dbd4] px-6 lg:px-16">
@@ -108,13 +128,27 @@ export default function DownloadPage() {
                 <span>{file.updated}</span>
                 <span>{file.size}</span>
               </div>
-              <button
-                aria-label={`${file.name} 다운로드`}
-                className="shrink-0 flex items-center gap-1.5 px-3 py-2 border border-[#e0dbd4] text-[11px] font-semibold text-[#333333] hover:bg-[#111111] hover:text-white hover:border-[#111111] transition-colors"
-              >
-                <DownloadIcon />
-                다운로드
-              </button>
+              {file.file ? (
+                <a
+                  href={file.file}
+                  download
+                  aria-label={`${file.name} 다운로드`}
+                  className="shrink-0 flex items-center gap-1.5 px-3 py-2 border border-[#e0dbd4] text-[11px] font-semibold text-ink-soft hover:bg-ink hover:text-white hover:border-ink transition-colors"
+                >
+                  <DownloadIcon />
+                  다운로드
+                </a>
+              ) : (
+                <button
+                  disabled
+                  aria-label={`${file.name} — 준비 중`}
+                  title="준비 중"
+                  className="shrink-0 flex items-center gap-1.5 px-3 py-2 border border-[#e0dbd4] text-[11px] font-semibold text-[#b0afa9] cursor-not-allowed"
+                >
+                  <DownloadIcon />
+                  다운로드
+                </button>
+              )}
             </div>
           ))}
         </div>

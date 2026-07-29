@@ -45,7 +45,7 @@ collections:
             fields:
               - { label: "제목", name: "title", widget: "string" }
               - { label: "부제목", name: "subtitle", widget: "text" }
-              - { label: "배경 이미지", name: "image", widget: "image" }
+              - { label: "배경 이미지", name: "image", widget: "image", required: false, media_folder: "public/images/page-headers", public_folder: "/images/page-headers" }
           - label: "브랜드 철학"
             name: "philosophy"
             widget: "object"
@@ -76,6 +76,7 @@ collections:
               - { label: "이름", name: "label", widget: "string" }
               - { label: "설명", name: "sub", widget: "string" }
               - { label: "배지", name: "badge", widget: "string" }
+              - { label: "인증서 파일 (이미지 또는 PDF)", name: "file", widget: "file", required: false, media_folder: "public/images/certifications", public_folder: "/images/certifications" }
           - label: "생산 설비"
             name: "equipment"
             widget: "list"
@@ -96,6 +97,7 @@ collections:
             fields:
               - { label: "제목", name: "title", widget: "string" }
               - { label: "부제목", name: "subtitle", widget: "text" }
+              - { label: "배경 이미지", name: "image", widget: "image", required: false, media_folder: "public/images/page-headers", public_folder: "/images/page-headers" }
           - { label: "운영 시간", name: "hours", widget: "string" }
           - { label: "견적 문의 이메일", name: "quoteEmail", widget: "string" }
           - { label: "대리점 문의 이메일", name: "dealerEmail", widget: "string" }
@@ -145,6 +147,7 @@ collections:
             fields:
               - { label: "제목", name: "title", widget: "string" }
               - { label: "부제목", name: "subtitle", widget: "text" }
+              - { label: "배경 이미지", name: "image", widget: "image", required: false, media_folder: "public/images/page-headers", public_folder: "/images/page-headers" }
           - label: "파일 목록"
             name: "files"
             widget: "list"
@@ -152,8 +155,9 @@ collections:
               - label: "분류"
                 name: "category"
                 widget: "select"
-                options: ["도면", "시방서", "카탈로그", "시험성적서", "설치매뉴얼"]
+                options: ["도면", "시방서", "카탈로그", "시험성적서", "인증", "설치매뉴얼"]
               - { label: "파일명", name: "name", widget: "string" }
               - { label: "설명", name: "desc", widget: "string" }
               - { label: "용량", name: "size", widget: "string" }
               - { label: "업데이트", name: "updated", widget: "string" }
+              - { label: "다운로드 파일", name: "file", widget: "file", required: false, media_folder: "public/downloads", public_folder: "/downloads" }

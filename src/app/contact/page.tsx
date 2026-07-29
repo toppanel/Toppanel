@@ -1,3 +1,4 @@
+import Image from "next/image";
 import PageBreadcrumb from "@/components/layout/PageBreadcrumb";
 import { COMPANY } from "@/data/data";
 import contactContent from "@/content/contact.json";
@@ -10,19 +11,45 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-[#f5f2ee]">
 
-      {/* Page header */}
-      <div className="bg-white border-b border-[#e0dbd4] px-6 lg:px-16 py-10">
-        <PageBreadcrumb />
-        <p className="text-[11px] font-semibold tracking-[0.2em] text-[#888880] uppercase mb-2">
-          CONTACT
-        </p>
-        <h1 className="text-3xl lg:text-4xl font-bold text-[#111111] tracking-tight mb-3">
-          {header.title}
-        </h1>
-        <p className="text-[#555555] text-sm leading-relaxed max-w-xl">
-          {header.subtitle}
-        </p>
-      </div>
+      {/* Page header — photo banner once header.image is set, plain header until then */}
+      {header.image ? (
+        <div className="relative border-b border-[#e0dbd4] min-h-75 flex flex-col justify-center px-6 lg:px-16 py-12 overflow-hidden">
+          <Image
+            src={header.image}
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover"
+            style={{ objectPosition: "40% 40%", transform: "scale(1.15)" }}
+            priority
+          />
+          <div className="absolute inset-0 bg-black/55" />
+          <div className="relative z-10">
+            <p className="text-[11px] font-semibold tracking-[0.2em] text-white/60 uppercase mb-2">
+              CONTACT
+            </p>
+            <h1 className="text-3xl lg:text-4xl font-bold text-white tracking-tight mb-3">
+              {header.title}
+            </h1>
+            <p className="text-white/70 text-sm leading-relaxed max-w-xl">
+              {header.subtitle}
+            </p>
+          </div>
+        </div>
+      ) : (
+        <div className="bg-white border-b border-[#e0dbd4] px-6 lg:px-16 py-10">
+          <PageBreadcrumb />
+          <p className="text-[11px] font-semibold tracking-[0.2em] text-[#888880] uppercase mb-2">
+            CONTACT
+          </p>
+          <h1 className="text-3xl lg:text-4xl font-bold text-[#111111] tracking-tight mb-3">
+            {header.title}
+          </h1>
+          <p className="text-[#555555] text-sm leading-relaxed max-w-xl">
+            {header.subtitle}
+          </p>
+        </div>
+      )}
 
       {/* 6 contact method cards */}
       <section className="px-6 lg:px-16 py-12 border-b border-[#e0dbd4]">

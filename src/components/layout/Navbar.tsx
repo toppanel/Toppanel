@@ -30,12 +30,9 @@ const MENUS = [
     ],
   },
   {
-    key: "colors", label: "컬러차트", href: "/download",
+    key: "colors", label: "컬러차트", href: "/colors",
     items: [
-      { label: "솔리드", href: "/download" },
-      { label: "우드", href: "/download" },
-      { label: "메탈", href: "/download" },
-      { label: "대리석", href: "/download" },
+      { label: "컬러차트 보기", href: "/colors" },
     ],
   },
   {
@@ -220,7 +217,7 @@ export default function Navbar() {
                     {/* pl-12 matches the nav item's px-12 left padding */}
                     <ul className="space-y-0.5 pl-12">
                       {menu.items.map((item) => (
-                        <li key={item.href}>
+                        <li key={item.label}>
                           <Link
                             href={item.href}
                             onClick={() => setActiveKey(null)}
@@ -316,7 +313,7 @@ export default function Navbar() {
                     className="overflow-hidden bg-off"
                   >
                     {menu.items.map((item) => (
-                      <li key={item.href}>
+                      <li key={item.label}>
                         <Link
                           href={item.href}
                           onClick={() => setDrawerOpen(false)}

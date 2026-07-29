@@ -12,7 +12,7 @@ export default function ColorsPage() {
       {/* Page header */}
       <div className="relative border-b border-[#e0dbd4] min-h-75 flex flex-col justify-center px-6 lg:px-12 py-12 overflow-hidden">
         <Image
-          src="/images/page-headers/color-chart.png"
+          src="/images/page-headers/color-chart.jpg"
           alt=""
           fill
           sizes="100vw"

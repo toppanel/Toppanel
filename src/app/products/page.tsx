@@ -14,7 +14,7 @@ export default function ProductsPage() {
       {/* Full-width page header */}
       <div className="relative border-b border-[#e8e4e0] min-h-75 flex flex-col justify-center px-6 lg:px-12 py-12 overflow-hidden">
         <Image
-          src="/images/page-headers/products.png"
+          src="/images/page-headers/products.jpg"
           alt=""
           fill
           sizes="100vw"

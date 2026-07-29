@@ -6,20 +6,26 @@ image here and point that page's `header.image` field at it (via
 
 ## Current files
 
-- `about.png` — 회사소개 (`src/content/about.json` → `header.image`)
+- `about.jpg` — 회사소개 (`src/content/about.json` → `header.image`)
+- `contact.jpg` — 문의하기 (`src/content/contact.json` → `header.image`)
+- `resources.jpg` — 자료실 (`src/content/downloads.json` → `header.image`)
+- `products.jpg` — 제품소개 (hardcoded in `src/app/products/page.tsx`, no content file backs this page's header)
+- `color-chart.jpg` — 컬러차트 (hardcoded in `src/app/colors/page.tsx`, same reason)
+
+All five render the same full-bleed, `object-cover` photo banner with a
+dark overlay for text legibility. Use `.jpg`, not `.png` — these are
+photos, and JPEG compresses them far better (a PNG of the same photo
+easily runs 5-15x larger for no visual benefit).
 
 ## Wiring a new page's header photo
 
-Only pages whose header text is driven by a `src/content/*.json` file
-support a background photo right now: **회사소개, 문의하기, 자료실**.
-Set that file's `header.image` to the path here (e.g.
-`/images/page-headers/contact.jpg`) and the page automatically
-switches from its plain white header to the full-width photo banner
-(dark overlay, white text) — no code changes needed.
+For 회사소개/문의하기/자료실 (JSON-backed headers): set that file's
+`header.image` to the path here and the page automatically switches
+from its plain white header to the photo banner — no code changes
+needed. Leave `header.image` empty (`""`) to keep the plain header.
 
-Leave `header.image` empty (`""`) to keep the plain header — that's
-the default today for 문의하기 and 자료실 until photos are set.
+제품소개/컬러차트 don't have a content file backing their headers, so
+their image path is hardcoded directly in the page file instead.
 
-`제품소개` and `큐비클 유니버스` (자재/시공 이야기) don't have a
-content file backing their headers yet, so they aren't wired up for a
-background photo yet — ask if you want that added too.
+`큐비클 유니버스` (자재/시공 이야기) still isn't wired up for a
+background photo — ask if you want that added too.

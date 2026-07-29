@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PRODUCT_CATEGORIES } from "@/lib/products";
@@ -13,47 +12,14 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ activeCat, activeModel }: SidebarProps = {}) {
-  const pathname = usePathname() ?? "/";
-  const isOnProductsHome = pathname === "/products";
+  const [expandedSlug, setExpandedSlug] = useState<string | null>(activeCat ?? null);
 
-  /* Determine which category should start expanded */
-  const getInitialExpanded = (): string | null => {
-    if (activeCat) return activeCat;
-    const matched = PRODUCT_CATEGORIES.find((c) =>
-      pathname.startsWith(`/products/${c.slug}`)
-    );
-    return matched?.slug ?? null;
-  };
-
-  const [expandedSlug, setExpandedSlug] = useState<string | null>(getInitialExpanded);
-
-  /* Sync when activeCat prop changes (search-param navigation) */
+  /* Sync when activeCat changes via search-param navigation */
   useEffect(() => {
     if (activeCat) setExpandedSlug(activeCat);
   }, [activeCat]);
 
-  /* Sync when pathname changes (direct URL navigation) */
-  useEffect(() => {
-    if (!isOnProductsHome) {
-      const matched = PRODUCT_CATEGORIES.find((c) =>
-        pathname.startsWith(`/products/${c.slug}`)
-      );
-      if (matched) setExpandedSlug(matched.slug);
-    }
-  }, [pathname, isOnProductsHome]);
-
-  const isActive = (slug: string) => {
-    if (isOnProductsHome) return activeCat === slug;
-    return (
-      pathname === `/products/${slug}` ||
-      pathname.startsWith(`/products/${slug}/`)
-    );
-  };
-
-  const getHref = (slug: string) =>
-    isOnProductsHome ? `/products?cat=${slug}` : `/products/${slug}`;
-
-  const allActive = isOnProductsHome && !activeCat;
+  const allActive = !activeCat;
 
   return (
     <aside className="hidden lg:block">
@@ -82,7 +48,7 @@ export default function Sidebar({ activeCat, activeModel }: SidebarProps = {}) {
           <nav aria-label="제품 카테고리" className="pb-4">
             <ul>
               {PRODUCT_CATEGORIES.map((cat) => {
-                const active = isActive(cat.slug);
+                const active = activeCat === cat.slug;
                 const expanded = expandedSlug === cat.slug;
 
                 return (
@@ -95,7 +61,7 @@ export default function Sidebar({ activeCat, activeModel }: SidebarProps = {}) {
 
                       {/* Label — navigates on click */}
                       <Link
-                        href={getHref(cat.slug)}
+                        href={`/products?cat=${cat.slug}`}
                         onClick={() => setExpandedSlug(expanded ? null : cat.slug)}
                         className={`flex-1 flex items-center justify-between px-7 py-3.5 text-[15px] transition-colors ${
                           active ? "font-bold text-ink" : "text-body hover:text-ink"
@@ -122,17 +88,11 @@ export default function Sidebar({ activeCat, activeModel }: SidebarProps = {}) {
                           className="overflow-hidden bg-[#f7f5f2]"
                         >
                           {cat.models.map((model) => {
-                            const modelActive = isOnProductsHome
-                              ? activeModel === model.slug
-                              : pathname === `/products/${cat.slug}/${model.slug}` ||
-                                pathname.startsWith(`/products/${cat.slug}/${model.slug}/`);
-                            const modelHref = isOnProductsHome
-                              ? `/products?cat=${cat.slug}&model=${model.slug}`
-                              : `/products/${cat.slug}/${model.slug}/gallery`;
+                            const modelActive = activeModel === model.slug;
                             return (
                               <li key={model.slug}>
                                 <Link
-                                  href={modelHref}
+                                  href={`/products?cat=${cat.slug}&model=${model.slug}`}
                                   className={`flex items-center pl-10 pr-7 py-2.5 text-[14px] transition-colors border-l-2 ${
                                     modelActive
                                       ? "font-semibold text-ink border-ink bg-white"

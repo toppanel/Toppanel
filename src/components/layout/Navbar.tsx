@@ -20,12 +20,12 @@ const MENUS = [
   {
     key: "products", label: "제품소개", href: "/products",
     items: [
-      { label: "화장실칸막이", href: "/products/cubicle" },
-      { label: "장애인칸막이", href: "/products/accessible" },
-      { label: "유리칸막이",   href: "/products/glass" },
-      { label: "탈의실",       href: "/products/changing-room" },
-      { label: "하부장",       href: "/products/lower-cabinet" },
-      { label: "월패널",       href: "/products/wall-panel" },
+      { label: "화장실칸막이", href: "/products?cat=cubicle" },
+      { label: "장애인칸막이", href: "/products?cat=accessible" },
+      { label: "유리칸막이",   href: "/products?cat=glass" },
+      { label: "탈의실",       href: "/products?cat=changing-room" },
+      { label: "하부장",       href: "/products?cat=lower-cabinet" },
+      { label: "월패널",       href: "/products?cat=wall-panel" },
       { label: "전체 제품보기", href: "/products" },
     ],
   },

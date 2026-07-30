@@ -57,7 +57,7 @@ const PRODUCT_IMAGES: Record<string, string[]> = {
   ].map((f) => `${PRODUCT_IMAGE_BASE}/accessible/${f}`),
   glass: [
     "cubicle-urinal-01.jpg", "cubicle-urinal-02.png", "cubicle-urinal-03.jpg",
-    "cubicle-urinal-04.jpg", "cubicle-urinal-05.jpg", "cubicle-urinal-07.png",
+    "cubicle-urinal-04.jpg", "cubicle-urinal-05.jpg", "cubicle-urinal-06.png",
     "glass-shower-booth-01.jpg", "glass-shower-partition-01.png",
   ].map((f) => `${PRODUCT_IMAGE_BASE}/glass/${f}`),
   "changing-room": [
@@ -196,7 +196,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
         slug: "ur", code: "UR", name: "소변기칸막이", nameKo: "소변기칸막이",
         images: [
           "cubicle-urinal-01.jpg", "cubicle-urinal-02.png", "cubicle-urinal-03.jpg",
-          "cubicle-urinal-04.jpg", "cubicle-urinal-05.jpg", "cubicle-urinal-07.png",
+          "cubicle-urinal-04.jpg", "cubicle-urinal-05.jpg", "cubicle-urinal-06.png",
         ],
       },
       { slug: "shp", code: "SHP", name: "샤워파티션",   nameKo: "샤워파티션", images: ["glass-shower-partition-01.png"] },

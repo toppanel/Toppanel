@@ -37,6 +37,7 @@ export default async function handler(req, res) {
 <script>
   (function () {
     function receiveMessage(e) {
+      if (e.data !== "authorizing:github") return;
       window.opener.postMessage(${JSON.stringify(message)}, e.origin);
       window.removeEventListener("message", receiveMessage, false);
       window.close();

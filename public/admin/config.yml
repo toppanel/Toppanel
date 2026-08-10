@@ -1,15 +1,12 @@
 # Decap CMS config — served at /admin. Edits here go straight to the
 # src/content/*.json files that the site's pages import at build time,
 # which the self-hosted runner then builds and FTP-deploys automatically.
-#
-# TODO once the OAuth relay is deployed to Vercel: replace `base_url`
-# below with that deployment's URL (see CMS_SETUP.md).
 
 backend:
   name: github
   repo: toppanel/Toppanel
   branch: main
-  base_url: https://REPLACE-WITH-YOUR-VERCEL-OAUTH-RELAY.vercel.app
+  base_url: https://toppanel-one.vercel.app
   auth_endpoint: auth
 
 media_folder: "public/images"

@@ -1,13 +1,23 @@
 # Content CMS + auto-deploy setup
 
-This lets non-technical staff edit homepage/about/contact/downloads copy
-through a form UI at `/admin`, without touching code. Saving in that UI
+This lets non-technical staff edit homepage/about/contact/downloads/products
+copy through a form UI at `/admin`, without touching code. Saving in that UI
 commits straight to GitHub, which triggers a GitHub Actions job that
 rebuilds the site and uploads it to `ftp.toppanel.co.kr` automatically.
 
 Everything below is a one-time setup. Once it's done, day-to-day editing
 is just: open `/admin`, log in with GitHub, edit, save. No FTP client, no
 code, no rebuild step for staff to run.
+
+**Status: steps 1–4 are done.** Repo: `toppanel/Toppanel` (main branch).
+OAuth relay: deployed on Vercel at `https://toppanel-one.vercel.app`
+(Root Directory `cms-oauth`), and `public/admin/config.yml`'s `base_url`
+already points at it. The GitHub OAuth App's callback URL must match
+`https://toppanel-one.vercel.app/callback` exactly. Steps 5–6 (FTP
+secrets, staff access) — confirm these are done before relying on
+`/admin` in production; if this relay is ever redeployed to a new URL,
+update `base_url` here to match and update the OAuth App's callback URL
+too, or login will fail.
 
 ## How it fits together
 

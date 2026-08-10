@@ -39,6 +39,7 @@ export default async function handler(req, res) {
     function receiveMessage(e) {
       window.opener.postMessage(${JSON.stringify(message)}, e.origin);
       window.removeEventListener("message", receiveMessage, false);
+      window.close();
     }
     window.addEventListener("message", receiveMessage, false);
     window.opener.postMessage("authorizing:github", "*");

@@ -1,0 +1,175 @@
+{
+  "categories": [
+    {
+      "slug": "cubicle",
+      "label": "화장실칸막이",
+      "labelSub": "TOILET CUBICLE",
+      "description": "불연·기본·메탈·디자인·어린이·스테인리스 등 다양한 소재와 마감으로 모든 공간 요건에 맞는 화장실 칸막이 라인업입니다.",
+      "image": "/images/products/cubicle/design/cubicle-design-01.jpg",
+      "fallbackImages": [
+        "/images/products/cubicle/metro/cubicle-metro-01.jpg", "/images/products/cubicle/metro/cubicle-metro-02.jpg", "/images/products/cubicle/metro/cubicle-metro-03.png", "/images/products/cubicle/metro/cubicle-metro-04.jpg", "/images/products/cubicle/metro/cubicle-metro-05.jpg",
+        "/images/products/cubicle/basic/cubicle-basic-01.jpg", "/images/products/cubicle/basic/cubicle-basic-02.jpg", "/images/products/cubicle/basic/cubicle-basic-03.jpg", "/images/products/cubicle/basic/cubicle-basic-04.jpg", "/images/products/cubicle/basic/cubicle-basic-05.jpg",
+        "/images/products/cubicle/basic/cubicle-basic-06.jpg", "/images/products/cubicle/basic/cubicle-basic-07.jpg", "/images/products/cubicle/basic/cubicle-basic-08.png", "/images/products/cubicle/basic/cubicle-basic-09.png", "/images/products/cubicle/basic/cubicle-basic-10.png",
+        "/images/products/cubicle/basic/cubicle-basic-11.png", "/images/products/cubicle/basic/cubicle-basic-12.png", "/images/products/cubicle/basic/cubicle-basic-13.jpg", "/images/products/cubicle/basic/cubicle-basic-14.png", "/images/products/cubicle/basic/cubicle-basic-15.png",
+        "/images/products/cubicle/basic/cubicle-basic-16.jpg", "/images/products/cubicle/basic/cubicle-basic-17.png", "/images/products/cubicle/basic/cubicle-basic-18.png", "/images/products/cubicle/basic/cubicle-basic-19.jpg",
+        "/images/products/cubicle/metal/cubicle-metal-01.jpg", "/images/products/cubicle/metal/cubicle-metal-02.png", "/images/products/cubicle/metal/cubicle-metal-03.png", "/images/products/cubicle/metal/cubicle-metal-04.jpg",
+        "/images/products/cubicle/design/cubicle-design-01.jpg", "/images/products/cubicle/design/cubicle-design-02.jpg", "/images/products/cubicle/design/cubicle-design-03.jpg", "/images/products/cubicle/design/cubicle-design-04.jpg", "/images/products/cubicle/design/cubicle-design-05.jpg",
+        "/images/products/cubicle/design/cubicle-design-06.jpg", "/images/products/cubicle/design/cubicle-design-07.jpg", "/images/products/cubicle/design/cubicle-design-08.jpg", "/images/products/cubicle/design/cubicle-design-09.jpg", "/images/products/cubicle/design/cubicle-design-10.jpg",
+        "/images/products/cubicle/kids/cubicle-kids-01.png",
+        "/images/products/cubicle/stainless/cubicle-stainless-01.jpg", "/images/products/cubicle/stainless/cubicle-stainless-02.jpg", "/images/products/cubicle/stainless/cubicle-stainless-03.jpg",
+        "/images/products/cubicle/urinal/cubicle-urinal-01.jpg", "/images/products/cubicle/urinal/cubicle-urinal-02.png",
+        "/images/products/cubicle/ordermade/cubicle-ordermade-01.jpg", "/images/products/cubicle/ordermade/cubicle-ordermade-02.jpg", "/images/products/cubicle/ordermade/cubicle-ordermade-03.jpg",
+        "/images/products/cubicle/ordermade/cubicle-ordermade-04.jpg", "/images/products/cubicle/ordermade/cubicle-ordermade-05.png", "/images/products/cubicle/ordermade/cubicle-ordermade-06.jpg", "/images/products/cubicle/ordermade/cubicle-ordermade-07.jpg"
+      ],
+      "models": [
+        {
+          "slug": "metro", "code": "METRO", "name": "불연 METRO", "nameKo": "불연 METRO",
+          "images": [
+            "/images/products/cubicle/metro/cubicle-metro-01.jpg", "/images/products/cubicle/metro/cubicle-metro-02.jpg", "/images/products/cubicle/metro/cubicle-metro-03.png", "/images/products/cubicle/metro/cubicle-metro-04.jpg", "/images/products/cubicle/metro/cubicle-metro-05.jpg"
+          ]
+        },
+        {
+          "slug": "basic", "code": "BASIC", "name": "기본 BASIC", "nameKo": "기본 BASIC",
+          "images": [
+            "/images/products/cubicle/basic/cubicle-basic-01.jpg", "/images/products/cubicle/basic/cubicle-basic-02.jpg", "/images/products/cubicle/basic/cubicle-basic-03.jpg", "/images/products/cubicle/basic/cubicle-basic-04.jpg", "/images/products/cubicle/basic/cubicle-basic-05.jpg",
+            "/images/products/cubicle/basic/cubicle-basic-06.jpg", "/images/products/cubicle/basic/cubicle-basic-07.jpg", "/images/products/cubicle/basic/cubicle-basic-08.png", "/images/products/cubicle/basic/cubicle-basic-09.png", "/images/products/cubicle/basic/cubicle-basic-10.png",
+            "/images/products/cubicle/basic/cubicle-basic-11.png", "/images/products/cubicle/basic/cubicle-basic-12.png", "/images/products/cubicle/basic/cubicle-basic-13.jpg", "/images/products/cubicle/basic/cubicle-basic-14.png", "/images/products/cubicle/basic/cubicle-basic-15.png",
+            "/images/products/cubicle/basic/cubicle-basic-16.jpg", "/images/products/cubicle/basic/cubicle-basic-17.png", "/images/products/cubicle/basic/cubicle-basic-18.png", "/images/products/cubicle/basic/cubicle-basic-19.jpg"
+          ]
+        },
+        {
+          "slug": "metal", "code": "METAL", "name": "메탈 METAL", "nameKo": "메탈 METAL",
+          "images": [
+            "/images/products/cubicle/metal/cubicle-metal-01.jpg", "/images/products/cubicle/metal/cubicle-metal-02.png", "/images/products/cubicle/metal/cubicle-metal-03.png", "/images/products/cubicle/metal/cubicle-metal-04.jpg"
+          ]
+        },
+        {
+          "slug": "design", "code": "DESIGN", "name": "디자인 DESIGN", "nameKo": "디자인 DESIGN",
+          "images": [
+            "/images/products/cubicle/design/cubicle-design-01.jpg", "/images/products/cubicle/design/cubicle-design-02.jpg", "/images/products/cubicle/design/cubicle-design-03.jpg", "/images/products/cubicle/design/cubicle-design-04.jpg", "/images/products/cubicle/design/cubicle-design-05.jpg",
+            "/images/products/cubicle/design/cubicle-design-06.jpg", "/images/products/cubicle/design/cubicle-design-07.jpg", "/images/products/cubicle/design/cubicle-design-08.jpg", "/images/products/cubicle/design/cubicle-design-09.jpg", "/images/products/cubicle/design/cubicle-design-10.jpg",
+            "/images/products/cubicle/design/cubicle-design-11.jpg", "/images/products/cubicle/design/cubicle-design-12.jpg", "/images/products/cubicle/design/cubicle-design-13.jpg", "/images/products/cubicle/design/cubicle-design-14.jpg", "/images/products/cubicle/design/cubicle-design-15.jpg",
+            "/images/products/cubicle/design/cubicle-design-16.jpg", "/images/products/cubicle/design/cubicle-design-17.jpg", "/images/products/cubicle/design/cubicle-design-18.jpg", "/images/products/cubicle/design/cubicle-design-19.jpg", "/images/products/cubicle/design/cubicle-design-20.jpg",
+            "/images/products/cubicle/design/cubicle-design-21.jpg", "/images/products/cubicle/design/cubicle-design-22.jpg", "/images/products/cubicle/design/cubicle-design-23.jpg", "/images/products/cubicle/design/cubicle-design-24.jpg", "/images/products/cubicle/design/cubicle-design-25.jpg",
+            "/images/products/cubicle/design/cubicle-design-26.jpg", "/images/products/cubicle/design/cubicle-design-27.jpg", "/images/products/cubicle/design/cubicle-design-28.jpg", "/images/products/cubicle/design/cubicle-design-29.jpg", "/images/products/cubicle/design/cubicle-design-30.jpg",
+            "/images/products/cubicle/design/cubicle-design-31.jpg", "/images/products/cubicle/design/cubicle-design-32.jpg", "/images/products/cubicle/design/cubicle-design-33.jpg", "/images/products/cubicle/design/cubicle-design-34.jpg", "/images/products/cubicle/design/cubicle-design-35.jpg",
+            "/images/products/cubicle/design/cubicle-design-36.jpg", "/images/products/cubicle/design/cubicle-design-37.jpg", "/images/products/cubicle/design/cubicle-design-38.jpg", "/images/products/cubicle/design/cubicle-design-39.jpg", "/images/products/cubicle/design/cubicle-design-40.jpg",
+            "/images/products/cubicle/design/cubicle-design-41.jpg", "/images/products/cubicle/design/cubicle-design-42.jpg"
+          ]
+        },
+        {
+          "slug": "kids", "code": "KIDS", "name": "어린이 KIDS", "nameKo": "어린이 KIDS",
+          "images": ["/images/products/cubicle/kids/cubicle-kids-01.png"]
+        },
+        {
+          "slug": "stainless", "code": "STAINLESS", "name": "스테인리스 STAINLESS", "nameKo": "스테인리스 STAINLESS",
+          "images": [
+            "/images/products/cubicle/stainless/cubicle-stainless-01.jpg", "/images/products/cubicle/stainless/cubicle-stainless-02.jpg", "/images/products/cubicle/stainless/cubicle-stainless-03.jpg"
+          ]
+        },
+        {
+          "slug": "urinal", "code": "URINAL", "name": "소변기칸막이", "nameKo": "소변기칸막이",
+          "images": [
+            "/images/products/cubicle/urinal/cubicle-urinal-01.jpg", "/images/products/cubicle/urinal/cubicle-urinal-02.png"
+          ]
+        },
+        {
+          "slug": "ordermade", "code": "ORDERMADE", "name": "주문제작형 ORDERMADE", "nameKo": "주문제작형 ORDERMADE",
+          "images": [
+            "/images/products/cubicle/ordermade/cubicle-ordermade-01.jpg", "/images/products/cubicle/ordermade/cubicle-ordermade-02.jpg", "/images/products/cubicle/ordermade/cubicle-ordermade-03.jpg",
+            "/images/products/cubicle/ordermade/cubicle-ordermade-04.jpg", "/images/products/cubicle/ordermade/cubicle-ordermade-05.png", "/images/products/cubicle/ordermade/cubicle-ordermade-06.jpg", "/images/products/cubicle/ordermade/cubicle-ordermade-07.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "accessible",
+      "label": "장애인칸막이",
+      "labelSub": "ACCESSIBLE",
+      "description": "장애인 편의시설 기준을 충족하는 슬라이딩·접이식 수동·자동 도어 시스템 라인업입니다.",
+      "image": "/images/products/accessible/accessible-sliding-01.jpg",
+      "fallbackImages": [
+        "/images/products/accessible/accessible-sliding-01.jpg", "/images/products/accessible/accessible-sliding-02.jpg", "/images/products/accessible/accessible-double-sliding-01.jpg",
+        "/images/products/accessible/accessible-folding-01.png", "/images/products/accessible/accessible-folding-02.png", "/images/products/accessible/accessible-auto-door-04.png"
+      ],
+      "models": [
+        { "slug": "sd", "code": "SD", "name": "슬라이딩 도어", "nameKo": "슬라이딩 도어", "images": ["/images/products/accessible/accessible-sliding-01.jpg", "/images/products/accessible/accessible-sliding-02.jpg"] },
+        { "slug": "dsd", "code": "DSD", "name": "이단 슬라이딩 도어", "nameKo": "이단 슬라이딩 도어", "images": ["/images/products/accessible/accessible-double-sliding-01.jpg"] },
+        { "slug": "fd", "code": "FD", "name": "접이식 도어", "nameKo": "접이식 도어", "images": ["/images/products/accessible/accessible-folding-01.png", "/images/products/accessible/accessible-folding-02.png"] },
+        { "slug": "sd-auto", "code": "SD-AUTO", "name": "슬라이딩 도어 자동문", "nameKo": "슬라이딩 도어 자동문", "images": ["/images/products/accessible/accessible-auto-door-04.png"] },
+        { "slug": "dsd-auto", "code": "DSD-AUTO", "name": "이단 슬라이딩 도어 자동문", "nameKo": "이단 슬라이딩 도어 자동문", "images": ["/images/products/accessible/accessible-auto-door-04.png"] },
+        { "slug": "fd-auto", "code": "FD-AUTO", "name": "접이식 도어 자동문", "nameKo": "접이식 도어 자동문", "images": ["/images/products/accessible/accessible-auto-door-04.png"] }
+      ]
+    },
+    {
+      "slug": "glass",
+      "label": "유리칸막이",
+      "labelSub": "GLASS PARTITION",
+      "description": "강화유리 소재의 소변기칸막이·샤워파티션·샤워부스 라인업입니다. 투명·반투명·불투명 다양한 조합이 가능합니다.",
+      "image": "/images/products/glass/glass-shower-booth-01.jpg",
+      "fallbackImages": [
+        "/images/products/glass/cubicle-urinal-01.jpg", "/images/products/glass/cubicle-urinal-02.png", "/images/products/glass/cubicle-urinal-03.jpg",
+        "/images/products/glass/cubicle-urinal-04.jpg", "/images/products/glass/cubicle-urinal-05.jpg", "/images/products/glass/cubicle-urinal-06.png",
+        "/images/products/glass/glass-shower-booth-01.jpg", "/images/products/glass/glass-shower-partition-01.png"
+      ],
+      "models": [
+        {
+          "slug": "ur", "code": "UR", "name": "소변기칸막이", "nameKo": "소변기칸막이",
+          "images": [
+            "/images/products/glass/cubicle-urinal-01.jpg", "/images/products/glass/cubicle-urinal-02.png", "/images/products/glass/cubicle-urinal-03.jpg",
+            "/images/products/glass/cubicle-urinal-04.jpg", "/images/products/glass/cubicle-urinal-05.jpg", "/images/products/glass/cubicle-urinal-06.png"
+          ]
+        },
+        { "slug": "shp", "code": "SHP", "name": "샤워파티션", "nameKo": "샤워파티션", "images": ["/images/products/glass/glass-shower-partition-01.png"] },
+        { "slug": "shb", "code": "SHB", "name": "샤워부스", "nameKo": "샤워부스", "images": ["/images/products/glass/glass-shower-booth-01.jpg"] }
+      ]
+    },
+    {
+      "slug": "changing-room",
+      "label": "탈의실",
+      "labelSub": "CHANGING ROOM",
+      "description": "탈의실·락커룸·샤워룸 등 다목적 공간에 적용 가능한 탈의실 칸막이 라인업입니다.",
+      "image": "/images/products/changing-room/changing-room-01.jpg",
+      "fallbackImages": [
+        "/images/products/changing-room/changing-room-01.jpg", "/images/products/changing-room/changing-room-02.jpg", "/images/products/changing-room/changing-room-03.jpg",
+        "/images/products/changing-room/changing-room-04.jpg", "/images/products/changing-room/changing-room-05.jpg", "/images/products/changing-room/changing-room-06.jpg"
+      ],
+      "models": [
+        {
+          "slug": "fit", "code": "FIT", "name": "탈의실칸막이", "nameKo": "탈의실칸막이",
+          "images": [
+            "/images/products/changing-room/changing-room-01.jpg", "/images/products/changing-room/changing-room-02.jpg", "/images/products/changing-room/changing-room-03.jpg",
+            "/images/products/changing-room/changing-room-04.jpg", "/images/products/changing-room/changing-room-05.jpg", "/images/products/changing-room/changing-room-06.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lower-cabinet",
+      "label": "하부장",
+      "labelSub": "LOWER CABINET",
+      "description": "세면대 하부 공간을 활용한 수납 하부장 라인업입니다. 내수성 소재로 화장실 환경에 최적화되어 있습니다.",
+      "fallbackImages": [],
+      "models": [
+        { "slug": "sink", "code": "SINK", "name": "세면대하부장", "nameKo": "세면대하부장" }
+      ]
+    },
+    {
+      "slug": "wall-panel",
+      "label": "월패널",
+      "labelSub": "WALL PANEL",
+      "description": "실내 벽체 마감에 사용하는 고품질 패널 라인업입니다. 다양한 컬러와 텍스처로 공간을 완성합니다.",
+      "image": "/images/products/wall-panel/wall-panel-01.jpg",
+      "fallbackImages": [
+        "/images/products/wall-panel/wall-panel-01.jpg", "/images/products/wall-panel/wall-panel-02.jpg", "/images/products/wall-panel/wall-panel-03.jpg", "/images/products/wall-panel/wall-panel-04.jpg", "/images/products/wall-panel/wall-panel-05.jpg",
+        "/images/products/wall-panel/wall-panel-06.jpg", "/images/products/wall-panel/wall-panel-07.jpg", "/images/products/wall-panel/wall-panel-08.jpg", "/images/products/wall-panel/wall-panel-09.jpg", "/images/products/wall-panel/wall-panel-10.jpg",
+        "/images/products/wall-panel/wall-panel-11.jpg", "/images/products/wall-panel/wall-panel-12.jpg", "/images/products/wall-panel/wall-panel-13.jpg", "/images/products/wall-panel/wall-panel-14.jpg", "/images/products/wall-panel/wall-panel-15.jpg",
+        "/images/products/wall-panel/wall-panel-16.jpg", "/images/products/wall-panel/wall-panel-17.jpg"
+      ],
+      "models": [
+        { "slug": "wp", "code": "WP", "name": "실내벽체마감패널", "nameKo": "실내벽체마감패널" },
+        { "slug": "smart", "code": "SMART", "name": "S.M.ART BOARD", "nameKo": "S.M.ART BOARD" }
+      ]
+    }
+  ]
+}

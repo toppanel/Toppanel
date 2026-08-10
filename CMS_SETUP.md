@@ -107,10 +107,16 @@ Decap CMS never needs a password of its own.
 - **다운로드 (Downloads)** — header text, full file list
 - **회사 정보 (Company)** — phone, address, email, business number
   (used across the site's footer/contact page)
+- **제품 카탈로그 (Products)** — every category (label, description, cover
+  photo, fallback photo pool) and every model within it (name, code,
+  photos). Backed by `src/content/products.json`, read by
+  `src/lib/products.ts`.
 
-The product catalog (`src/lib/products.ts`) is intentionally left out of
-the CMS for now — it's more structured/technical data. Ask if you want it
-added later.
+  One caveat: each category and model has a `슬러그` (slug) field marked
+  "절대 변경 금지" (don't change) — it drives the site's
+  `/products?cat=...&model=...` URLs. Renaming one breaks any bookmarked
+  or shared links to that category/model. Adding new categories/models,
+  or editing everything else, is safe.
 
 ## Local testing before any of the above is deployed
 

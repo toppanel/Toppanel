@@ -116,6 +116,44 @@ collections:
               - { label: "질문", name: "q", widget: "string" }
               - { label: "답변", name: "a", widget: "text" }
 
+  - name: "products"
+    label: "제품 카탈로그"
+    files:
+      - name: "products"
+        label: "제품 카탈로그 데이터"
+        file: "src/content/products.json"
+        fields:
+          - label: "카테고리"
+            name: "categories"
+            widget: "list"
+            summary: "{{fields.label}} ({{fields.slug}})"
+            fields:
+              - { label: "슬러그 (URL용 값 — 절대 변경 금지)", name: "slug", widget: "string" }
+              - { label: "분류명 (국문)", name: "label", widget: "string" }
+              - { label: "분류명 (영문)", name: "labelSub", widget: "string" }
+              - { label: "설명", name: "description", widget: "text" }
+              - { label: "대표 이미지", name: "image", widget: "image", required: false, media_folder: "public/images/products", public_folder: "/images/products" }
+              - label: "예비 이미지 (모델별 사진이 없을 때 대신 보여줄 사진들)"
+                name: "fallbackImages"
+                widget: "list"
+                required: false
+                field: { label: "이미지", name: "image", widget: "image", media_folder: "public/images/products", public_folder: "/images/products" }
+              - label: "모델"
+                name: "models"
+                widget: "list"
+                summary: "{{fields.code}} — {{fields.nameKo}}"
+                fields:
+                  - { label: "슬러그 (URL용 값 — 절대 변경 금지)", name: "slug", widget: "string" }
+                  - { label: "모델 코드", name: "code", widget: "string" }
+                  - { label: "모델 코드 (보조, 있는 경우만)", name: "codeS", widget: "string", required: false }
+                  - { label: "모델명 (영문)", name: "name", widget: "string" }
+                  - { label: "모델명 (국문)", name: "nameKo", widget: "string" }
+                  - label: "사진 (첫 번째 사진이 대표 사진)"
+                    name: "images"
+                    widget: "list"
+                    required: false
+                    field: { label: "이미지", name: "image", widget: "image", media_folder: "public/images/products", public_folder: "/images/products" }
+
   - name: "company"
     label: "회사 정보"
     files:

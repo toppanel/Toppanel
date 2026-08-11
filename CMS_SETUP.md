@@ -7,8 +7,8 @@ before touching anything — most confusion comes from not knowing why this
 setup looks the way it does.
 
 A separate, non-technical manual for staff editors exists as a shared
-Artifact page (ask the previous developer or check chat history for the
-link) — this document is for whoever maintains the code.
+page: https://claude.ai/code/artifact/efc1012d-7305-47f9-85d4-d0bc7179394d
+— this document is for whoever maintains the code.
 
 ## Big picture
 

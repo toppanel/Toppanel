@@ -42,7 +42,14 @@ try {
   // Wipes everything currently in FTP_REMOTE_DIR before uploading the fresh
   // build, so stale/removed pages don't linger on the host. Make sure
   // FTP_REMOTE_DIR points at the site's own folder, not a shared root.
-  await client.clearWorkingDir();
+  // .well-known/ is preserved — the host's own SSL auto-renewal (ACME/Let's
+  // Encrypt) owns that folder and the FTP account can't delete it anyway.
+  const PRESERVE = new Set([".well-known"]);
+  for (const item of await client.list()) {
+    if (PRESERVE.has(item.name)) continue;
+    if (item.isDirectory) await client.removeDir(item.name);
+    else await client.remove(item.name);
+  }
   await client.uploadFromDir(localDir);
 
   console.log("Deploy complete.");
